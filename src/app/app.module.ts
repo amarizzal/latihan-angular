@@ -2,21 +2,27 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
 import { TopBarComponent } from "./top-bar/top-bar.component";
 import { ProductListComponent } from "./product-list/product-list.component";
 import { ProductAlertsComponent } from "./product-alerts/product-alerts.component";
 import { ProductDetailsComponent } from "./product-details/product-details.component";
-import { CartServiceService } from './cart-service.service';
+import { CartServiceService } from "./cart-service.service";
+import { ShippingComponent } from "./shipping/shipping.component";
+import { CartComponent } from "./cart/cart.component";
 
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
-      { path: "products/:productId", component: ProductDetailsComponent }
+      { path: "products/:productId", component: ProductDetailsComponent },
+      { path: "cart", component: CartComponent },
+      { path: "shipping", component: ShippingComponent }
     ])
   ],
   declarations: [
@@ -24,7 +30,9 @@ import { CartServiceService } from './cart-service.service';
     TopBarComponent,
     ProductListComponent,
     ProductAlertsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ShippingComponent,
+    CartComponent
   ],
   bootstrap: [AppComponent],
   providers: [CartServiceService]
